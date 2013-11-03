@@ -152,6 +152,15 @@ endif
 
 LOCAL_CLANG := true
 
+ifeq ($(BOARD_USE_SAMSUNG_COLORFORMAT), true)
+LOCAL_CFLAGS += -DUSE_SAMSUNG_COLORFORMAT
+
+# Include native color format header path
+LOCAL_C_INCLUDES += \
+	$(TOP)/hardware/samsung/exynos4/hal/include \
+	$(TOP)/hardware/samsung/exynos4/include
+endif
+
 # FFMPEG plugin
 LOCAL_C_INCLUDES += $(TOP)/external/stagefright-plugins/include
 
